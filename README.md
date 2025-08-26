@@ -83,7 +83,7 @@ Add this to your Claude Desktop configuration (`~/Library/Application Support/Cl
   "mcpServers": {
     "RepoViz": {
       "command": "python",
-      "args": ["/path/to/RepoViz/mcp_server.py"]
+      "args": ["/path/to/RepoViz/enhanced_mcp_server.py"]
     }
   }
 }
