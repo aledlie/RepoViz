@@ -25,13 +25,24 @@ hg log -v > logs.txt
 ```
 ### 🎯 Warning: Run as a scheduled task if large (e.g. chron)
 
-The output will look ~like this for every commit:
+The output will look ~like this for every git commit:
 ```txt
 commit db89c01b219253e21310cd40353e3025089ea601
 Author: My Name <myemail@my_cool_domain.mcp>
 Date:   Mon Aug 25 06:38:24 2025 -0500
 
     Your Commit Message
+```
+And like ~this for hg:
+```txt
+  changeset:   59:783a1a00679c0i
+  user:        My Name <user@university.edu>
+  date:        Tue Jan 07 08:35:49 2024 -0500
+  files:       apply_laplacian.f90
+  description: debug_master
+  Topic: Fixed minor error in Laplacian.
+  Description:
+  * Factor of two error incorrect in the Laplacian.
 ```
 
 ## MCP Server Installation
