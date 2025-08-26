@@ -14,6 +14,7 @@ Provides a comprehensive toolkit for structuring, storing, analyzing, and visual
 ## Installation
 
 ### Generate logs.txt from commit data
+### 🎯 Warning: Run as a scheduled task if very large (e.g. chron)
 
 #### For git:
 ```bash
@@ -23,7 +24,6 @@ git log -v > logs.txt
 ```bash
 hg log -v > logs.txt
 ```
-### 🎯 Warning: Run as a scheduled task if large (e.g. chron)
 
 The output will look ~like this for every git commit:
 ```txt
