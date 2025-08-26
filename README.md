@@ -1,7 +1,7 @@
 # RepoViz MCP Server
 
-**Advanced Repository Observability Utilities** - Bringing professional data validation, structured metadata, and advanced configuration to your Git analytics workflow.
-A comprehensive toolkit for analyzing and visualizing Git commit patterns through interactive charts and graphs.
+**Code Observability Utils** - Bringing professional data validation, structured metadata, and advanced configuration to your Git/mercurial analytics workflow.
+Provides a comprehensive toolkit for structuring, storing, analyzing, and visualizing your repo code & commit patterns through schematization & interactive charts and graphs.
 
 ## Features
 
