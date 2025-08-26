@@ -41,8 +41,7 @@ And like ~this for hg:
   files:       apply_laplacian.f90
   description: debug_master
   Topic: Fixed minor error in Laplacian.
-  Description:
-  * Factor of two error incorrect in the Laplacian.
+  Description: Factor of two error incorrect in the Laplacian.
 ```
 
 ## MCP Server Installation
