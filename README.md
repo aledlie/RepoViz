@@ -1,239 +1,539 @@
-# Git Commit Visualization Utilities
+# CommitViz MCP Server
 
-A comprehensive toolkit for analyzing and visualizing Git commit patterns through interactive charts and graphs. This project provides both standalone scripts and an MCP (Model Context Protocol) server for generating commit activity visualizations by hour, day of week, and month.
+A comprehensive toolkit for analyzing and visualizing Git commit patterns through interactive charts and graphs.
 
 ## Features
 
-- **Commit Analysis by Time Patterns**
-  - Hourly commit distribution (bar charts)
-  - Day of week commit patterns (pie charts)
-  - Monthly commit activity (pie charts)
-  - Combined day/month visualizations
+-**Pydantic data validation**
+-**schema.org structured data** & **database support**
+-**an advanced MCP server** for programmatic access.
 
-- **Multiple Output Formats**
-  - High-resolution PNG charts (300 DPI)
-  - Repository-specific file naming
-  - Customizable titles and styling
+### Installation - Step 1: Generate logs.txt for your repo
 
-- **MCP Server Integration**
-  - Expose chart generation as MCP tools
-  - Programmatic access to visualization functions
-  - Integration with AI assistants and automation tools
+## First, create a text log of your commit data in your current repository.
 
-- **Utility Scripts**
-  - Git log extraction and parsing
-  - Repository name detection
-  - Case conversion utilities (kebab-case ↔ snake_case)
-
-## Project Structure
-
+### If using git, run:
+```bash
+git log -v > logs.txt
 ```
-utils/
-├── README.md                    # This file
-├── LICENSE.md                   # MIT License
-├── pyproject.toml              # Python project configuration
-├── mcp_server.py               # MCP server implementation
-│
-├── Data Collection Scripts/
-│   ├── commit_history.sh       # Extract git log to logs.txt
-│   ├── commits_by_hour.sh      # Parse commits by hour (0-23)
-│   ├── commits_by_day.sh       # Parse commits by day of week (0-6)
-│   ├── commits_by_month.sh     # Parse commits by month (1-12)
-│   └── get_repo_name.sh        # Extract repository name from git remote
-│
-├── Visualization Scripts/
-│   ├── plot_commits_by_hour.py # Generate hourly bar charts
-│   ├── plot_bar_graph.py       # Generic bar chart generator
-│   ├── plot_pie_day.py         # Day of week pie charts
-│   ├── plot_pie_month.py       # Monthly pie charts
-│   ├── plot_pie_day_month.py   # Combined day/month charts
-│   ├── plot_repo_by_hour.py    # Repository-specific hourly charts
-│   └── plot_repo_by_pie.py     # Repository-specific pie charts
-│
-├── Utility Scripts/
-│   ├── convert_kebab_to_snake.sh # Convert kebab-case to snake_case
-│   └── convert_snake_to_kebab.sh # Convert snake_case to kebab-case
-│
-├── Generated Data/
-│   ├── logs.txt                # Git log output
-│   ├── commit_counts.txt       # Hourly commit counts
-│   ├── commit_counts_day.txt   # Daily commit counts
-│   ├── commit_counts_month.txt # Monthly commit counts
-│   └── *.png                   # Generated chart images
-│
-└── Python Environment/
-    ├── .venv/                  # Virtual environment
-    └── __pycache__/           # Python bytecode cache
+### Or for mercurial:
+```
+hg log -v > logs.txt
+```
+### Warning: If you have a lot of commits, consider running overnight
+
+It'll spit out some structured data that will look ~like this for every commit:
+```txt
+commit db89c01b219253e21310cd40353e3025089ea601
+Author: Your Name <youremail@your_cool_domain.com>
+Date:   Mon Aug 25 06:38:24 2025 -0500
+
+    Your Commit Message
 ```
 
-## Installation
+## MCP Server Installation
+### Easy Install:
+```bash
+# Clone the repository
+git clone https://github.com/aledlie/RepoViz.git
+cd RepoViz
 
-### Prerequisites
-- Python 3.13+
-- Git repository (for commit analysis)
-- Bash shell (for data collection scripts)
+# Run the setup script
+python setup_enhanced.py
 
-### Setup
-1. Clone or download this utilities directory
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On macOS/Linux
-   # or
-   .venv\Scripts\activate     # On Windows
-   ```
+```
+### Manual Install:
+```bash
+# Activate the environment
+source activate.sh  # On macOS/Linux
+# or
+activate.bat       # On Windows
 
-3. Install dependencies:
-   ```bash
-   pip install matplotlib numpy mcp[cli]
-   ```
+# or create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On macOS/Linux
 
+# Install dependencies
+pip install -r requirements.txt
+
+# Make scripts executable (Unix-like systems)
+chmod +x *.sh
+```
 ## Usage
 
-### Quick Start
-1. **Generate git log data:**
-   ```bash
-   ./commit_history.sh
-   ```
+### With Claude Desktop
 
-2. **Create hourly commit visualization:**
-   ```bash
-   ./commits_by_hour.sh
-   python plot_commits_by_hour.py
-   ```
+Add this to your Claude Desktop configuration (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
-3. **Create day/month visualizations:**
-   ```bash
-   ./commits_by_day.sh
-   ./commits_by_month.sh
-   python plot_pie_day_month.py
-   ```
-
-### Individual Chart Generation
-
-**Hourly Bar Chart:**
-```bash
-./commits_by_hour.sh
-python plot_commits_by_hour.py
-# Generates: commits_by_hour.png
+```json
+{
+  "mcpServers": {
+    "RepoViz": {
+      "command": "python",
+      "args": ["/path/to/RepoViz/mcp_server.py"]
+    }
+  }
+}
 ```
 
-**Day of Week Pie Chart:**
+### Available Tools
+
+#### 1. get_schema_type
+Get detailed information about a schema.org type.
+
+
+
+## Stack Info
+
+### ✨ Data Validation
+- **Pydantic Models**: Type-safe data structures with automatic validation
+- **Configuration Management**: Structured chart and plot configurations
+- **Error Handling**: Comprehensive validation with detailed error messages
+
+### 🏗️ Schema.org Integration
+- **Structured Data**: JSON-LD schemas for SEO and discoverability
+- **Software Application Schema**: Proper metadata for the toolkit
+- **Dataset Schemas**: Structured data for commit analysis datasets
+- **Creative Work Schemas**: Metadata for generated charts
+
+### 🗄️ Database Support
+- **SQLAlchemy ORM**: Optional database storage for commit data
+- **Aggregated Statistics**: Pre-computed summaries by hour/day/month
+- **Chart Metadata**: Track generated visualizations
+- **Data Integrity**: Constraints and indexes for performance
+
+### 🔧 Advanced MCP Server
+- **Enhanced Tools**: Validated input/output with Pydantic
+- **Configuration Support**: Custom styling and parameters
+- **Schema Generation**: Automatic structured data creation
+- **Error Handling**: Detailed error responses and validation
+
+## 🎯 Quick Start
+
+### 1. Generate Basic Charts
 ```bash
-./commits_by_day.sh
-python plot_pie_day.py
-# Generates: commits_by_day.png
+# Using the enhanced plotting script
+github repo
+python enhanced_plot_scripts.py --type hour_bar --title "My Project Commits"
+
+# Using configuration file
+python enhanced_plot_scripts.py --config examples/configs/custom_styling.json
 ```
 
-**Monthly Pie Chart:**
+### 2. Start MCP Server
 ```bash
-./commits_by_month.sh
-python plot_pie_month.py
-# Generates: commits_by_month.png
+# Start the enhanced MCP server
+python enhanced_mcp_server.py
 ```
 
-**Combined Day/Month Charts:**
+### 3. Explore Examples
 ```bash
-./commits_by_day.sh
-./commits_by_month.sh
-python plot_pie_day_month.py
-# Generates: commits_by_day_month.png
+# Run example configurations
+python examples/example_configs.py
 ```
 
-### Repository-Specific Charts
-For charts with repository names in titles and filenames:
-```bash
-python plot_repo_by_hour.py    # Creates commits_by_hour_<repo_name>.png
-python plot_repo_by_pie.py     # Creates commits_by_day_month_<repo_name>.png
+## 📊 Chart Types
+
+| Chart Type | Description | Configuration |
+|------------|-------------|---------------|
+| `hour_bar` | Hourly commit distribution (bar chart) | `ChartType.HOUR_BAR` |
+| `day_pie` | Day of week patterns (pie chart) | `ChartType.DAY_PIE` |
+| `month_pie` | Monthly activity (pie chart) | `ChartType.MONTH_PIE` |
+| `day_month_combined` | Combined day/month visualization | `ChartType.DAY_MONTH_COMBINED` |
+
+## 🔧 Configuration
+
+### Pydantic Models
+
+```python
+from schemas import ChartConfig, PlotConfig, ChartType
+
+# Create plot configuration
+plot_config = PlotConfig(
+    dpi=600,
+    figsize=(16, 10),
+    color_primary="#2E8B57",
+    color_secondary="#228B22",
+    font_size=14
+)
+
+# Create chart configuration
+config = ChartConfig(
+    title="High-Resolution Commit Analysis",
+    output_filename="high_res_commits",
+    chart_type=ChartType.HOUR_BAR,
+    repository_name="MyProject",
+    plot_config=plot_config
+)
 ```
 
-### MCP Server
-Run the MCP server to expose chart generation as tools:
-```bash
-python mcp_server.py
+### JSON Configuration
+```json
+{
+  "title": "Custom Commit Analysis",
+  "output_filename": "custom_chart",
+  "chart_type": "day_pie",
+  "repository_name": "MyRepo",
+  "plot_config": {
+    "dpi": 300,
+    "figsize": [12, 8],
+    "color_primary": "#4e79a7",
+    "color_secondary": "#2e4977",
+    "font_size": 12
+  }
+}
 ```
 
-Available MCP tools:
-- `generate_hour_bar_chart()` - Create hourly bar chart
-- `generate_day_pie_chart()` - Create day of week pie chart  
-- `generate_month_pie_chart()` - Create monthly pie chart
+## 🌐 Schema.org Integration
 
-## Data Format
+### Generate Structured Data
+```python
+from schema_org import generate_all_schemas
 
-### Input Data
-- **logs.txt**: Raw git log output with commit dates
-- **commit_counts.txt**: Hour (00-23) and count pairs
-- **commit_counts_day.txt**: Day (0-6, Sun-Sat) and count pairs
-- **commit_counts_month.txt**: Month (1-12, Jan-Dec) and count pairs
+# Generate all schema.org files
+schema_files = generate_all_schemas(
+    repository_name="MyProject",
+    output_dir="./Generated Data/schemas/"
+)
+```
 
-### Output Charts
-- **Bar Charts**: Hourly commit distribution with grid lines
-- **Pie Charts**: Percentage-based circular visualizations
-- **Combined Charts**: Side-by-side day/month comparisons
-- **High Resolution**: 300 DPI PNG format for print quality
+### HTML Integration
+```python
+from schema_org import get_jsonld_script_tag, get_software_application_schema
 
-## Customization
+# Get schema data
+schema = get_software_application_schema("MyProject")
 
-### Chart Styling
-- Colors: Professional blue palette (#4e79a7, #2e4977)
-- Fonts: System default with clear readability
-- Grid: Subtle dotted lines for bar charts
-- Layout: Tight bounding boxes for clean output
+# Generate HTML script tag
+html_tag = get_jsonld_script_tag(schema)
+```
 
-### File Naming
-Charts automatically include repository names when using repo-specific scripts:
-- `commits_by_hour_myproject.png`
-- `commits_by_day_month_myproject.png`
+## 🗄️ Database Support
 
-## Dependencies
+### Initialize Database
+```python
+from database_schema import initialize_database
 
-### Python Packages
-- **matplotlib**: Chart generation and visualization
-- **numpy**: Numerical computations (matplotlib dependency)
-- **mcp[cli]**: Model Context Protocol server framework
+# Create database with all tables
+db_manager = initialize_database()
 
-### System Requirements
-- **Git**: Repository analysis and log extraction
-- **Bash**: Shell script execution
-- **sed/awk**: Text processing in shell scripts
+# Add repository
+repo = db_manager.get_or_create_repository("MyProject")
 
-## License
+# Import commit data
+db_manager.update_commit_summaries(repo.id)
+```
 
-MIT License - see [LICENSE.md](LICENSE.md) for details.
+### Query Statistics
+```python
+# Get comprehensive statistics
+stats = db_manager.get_commit_statistics(repo.id)
+print(f"Total commits: {stats['total_commits']}")
+print(f"Hourly distribution: {stats['hourly_distribution']}")
+```
 
-## Author
+## 🔌 MCP Server Tools
 
-**Alyshia Ledlie**
-- Email: alyshialedlie@example.com
-- Project: Personal Site Utilities
+The enhanced MCP server provides these validated tools:
 
-## Contributing
+### `generate_hour_bar_chart`
+```json
+{
+  "repository_name": "MyProject",
+  "title": "Custom Hourly Analysis",
+  "dpi": 600,
+  "color_primary": "#FF6B6B"
+}
+```
 
-This is a utility collection for personal site development. Feel free to adapt and modify for your own projects.
+### `generate_day_pie_chart`
+```json
+{
+  "repository_name": "MyProject",
+  "output_filename": "custom_day_chart"
+}
+```
 
-## Troubleshooting
+### `generate_month_pie_chart`
+```json
+{
+  "repository_name": "MyProject",
+  "title": "Monthly Commit Patterns"
+}
+```
+
+### `generate_combined_day_month_chart`
+```json
+{
+  "repository_name": "MyProject",
+  "dpi": 300
+}
+```
+
+### `validate_commit_data`
+```json
+{
+  "data_type": "hour"
+}
+```
+
+### `generate_schema_org_data`
+```json
+{
+  "repository_name": "MyProject",
+  "include_charts": true
+}
+```
+
+## 📁 Project Structure
+
+```
+RepoViz/
+├── README.md                  # This file
+├── requirements.txt           # Enhanced dependencies
+├── pyproject.toml             # Complete project configuration
+├── config.json                # Default configuration
+├── setup_enhanced.py          # Enhanced setup script
+├── activate.sh/.bat           # Environment activation
+│
+├── Core Enhanced Modules/
+│   ├── schemas.py             # Pydantic data models
+│   ├── schema_org.py          # Schema.org structured data
+│   ├── enhanced_mcp_server.py # Advanced MCP server
+│   ├── enhanced_plot_scripts.py # Enhanced plotting
+│   └── database_schema.py     # SQLAlchemy database models
+│
+├── Examples and Documentation/
+│   ├── examples/
+│   │   ├── example_configs.py # Configuration examples
+│   │   └── configs/           # Example JSON configs
+│   └── Generated Data/
+│       ├── schemas/           # Schema.org JSON-LD files
+│       └── git_viz.db        # SQLite database
+│
+└── Original Scripts/          # All original functionality preserved
+    ├── commit_history.sh
+    ├── commits_by_*.sh
+    ├── plot_*.py
+    └── get_repo_name.sh
+```
+
+## 🎨 Advanced Styling
+
+### Custom Color Schemes
+```python
+# Professional blue theme
+plot_config = PlotConfig(
+    color_primary="#1f77b4",
+    color_secondary="#ff7f0e"
+)
+
+# Nature theme
+plot_config = PlotConfig(
+    color_primary="#2E8B57",  # Sea green
+    color_secondary="#228B22"  # Forest green
+)
+
+# Sunset theme
+plot_config = PlotConfig(
+    color_primary="#FF6B6B",  # Coral
+    color_secondary="#4ECDC4"  # Turquoise
+)
+```
+
+### High-Resolution Output
+```python
+plot_config = PlotConfig(
+    dpi=600,              # Print quality
+    figsize=(20, 12),     # Large format
+    font_size=16,         # Readable text
+    title_fontsize=24     # Prominent titles
+)
+```
+
+## 📈 Data Validation
+
+### Automatic Validation
+```python
+from schemas import CommitCount, PeriodType
+
+# This will validate automatically
+commit_count = CommitCount(
+    period=15,                    # Hour 15 (3 PM)
+    count=42,                     # 42 commits
+    period_type=PeriodType.HOUR   # Hour period type
+)
+
+# This will raise validation error
+try:
+    invalid_count = CommitCount(
+        period=25,                # Invalid hour (>23)
+        count=-5,                 # Invalid count (<0)
+        period_type=PeriodType.HOUR
+    )
+except ValidationError as e:
+    print(f"Validation failed: {e}")
+```
+
+### File Validation
+```python
+from schemas import validate_commit_data_file
+
+# Validate and parse commit data
+try:
+    commit_data = validate_commit_data_file("./Generated Data/commit_counts.txt")
+    print(f"Loaded {len(commit_data)} valid records")
+except FileNotFoundError:
+    print("Data file not found")
+except ValueError as e:
+    print(f"Data validation failed: {e}")
+```
+
+## 🔍 Error Handling
+
+### MCP Server Responses
+```python
+from schemas import MCPToolResponse
+
+# Success response
+response = MCPToolResponse(
+    success=True,
+    message="Chart generated successfully",
+    output_file="./Generated Data/my_chart.png",
+    chart_config=config
+)
+
+# Error response
+response = MCPToolResponse(
+    success=False,
+    message="Failed to generate chart",
+    error_details="Data file not found: commit_counts.txt"
+)
+```
+
+## 🧪 Testing and Development
+
+### Run Examples
+```bash
+# Test all configurations
+python examples/example_configs.py
+
+# Test specific chart type
+python enhanced_plot_scripts.py --type hour_bar --repo TestRepo
+```
+
+### Validate Installation
+```bash
+# Test imports
+python -c "import schemas, schema_org, enhanced_plot_scripts, database_schema; print('✅ All modules imported successfully')"
+
+# Test database
+python -c "from database_schema import initialize_database; db = initialize_database(); print('✅ Database initialized')"
+```
+
+## 🔧 Troubleshooting
 
 ### Common Issues
 
-**"logs.txt not found"**
-- Run `./commit_history.sh` first to generate git log data
+**Import Errors**
+```bash
+# Ensure virtual environment is activated
+source .venv/bin/activate
 
-**"Not inside a git repository"**
-- Ensure you're running scripts from within a git repository
-- Check that `.git` directory exists
+# Reinstall dependencies
+pip install -r requirements.txt
+```
 
-**"No remote 'origin' configured"**
-- Add a git remote: `git remote add origin <url>`
-- Or modify `get_repo_name.sh` for different remote names
+**Data File Not Found**
+```bash
+# Generate git log data first
+./commit_history.sh
+./commits_by_hour.sh
+```
 
-**Permission denied on shell scripts**
-- Make scripts executable: `chmod +x *.sh`
+**Permission Denied (Unix)**
+```bash
+# Make scripts executable
+chmod +x *.sh
+```
 
-**Python import errors**
-- Activate virtual environment: `source .venv/bin/activate`
-- Install dependencies: `pip install matplotlib numpy mcp[cli]`
+**Database Issues**
+```bash
+# Reinitialize database
+python -c "from database_schema import initialize_database; initialize_database()"
+```
 
-### Chart Quality
-- Charts are generated at 300 DPI for high quality
-- Use `bbox_inches='tight'` for clean borders
-- Matplotlib backend may affect output on different systems
+## 📚 API Reference
+
+### Core Classes
+
+- **`ChartConfig`**: Main chart configuration with validation
+- **`PlotConfig`**: Plot styling and appearance settings
+- **`ChartRequest`**: MCP server request structure
+- **`MCPToolResponse`**: Standardized response format
+- **`CommitCount`**: Validated commit count data
+- **`RepositoryInfo`**: Repository metadata
+
+### Key Functions
+
+- **`create_default_chart_config()`**: Generate default configurations
+- **`validate_commit_data_file()`**: Validate and parse data files
+- **`generate_all_schemas()`**: Create schema.org structured data
+- **`create_chart_from_config()`**: Generate charts from configuration
+
+## 🤝 Contributing
+
+This enhanced version maintains full backward compatibility while adding powerful new features. All original scripts and functionality remain unchanged.
+
+### Development Setup
+```bash
+# Install development dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Format code
+black .
+
+# Type checking
+mypy .
+```
+
+## 📄 License
+
+MIT License - see [LICENSE.md](LICENSE.md) for details.
+
+## 👤 Author
+
+**Alyshia Ledlie**
+- Email: alyshialedlie@example.com
+- Project: Enhanced Git Commit Visualization Utilities
+
+
+
+1. **New features are opt-in**
+2. **Configuration files are optional**
+3. **Database support is optional**
+
+To use enhanced features:
+```bash
+# Use new enhanced scripts
+python enhanced_plot_scripts.py
+
+# Or keep using original scripts
+python plot_commits_by_hour.py
+```
+
+## 🎯 Roadmap
+
+- [ ] Web dashboard interface
+- [ ] Real-time commit monitoring
+- [ ] Team collaboration analytics
+- [ ] Integration with popular Git platforms
+- [ ] Advanced statistical analysis
+- [ ] Custom plugin system
+
+---
+
+**Enhanced Git Commit Visualization Utilities v2.0** - Bringing professional data validation, structured metadata, and advanced configuration to your Git analytics workflow.
