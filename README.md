@@ -1,31 +1,34 @@
-# CommitViz MCP Server
+# RepoViz MCP Server
 
+**Advanced Repository Observability Utilities** - Bringing professional data validation, structured metadata, and advanced configuration to your Git analytics workflow.
 A comprehensive toolkit for analyzing and visualizing Git commit patterns through interactive charts and graphs.
 
 ## Features
 
 -**Pydantic data validation**
+
 -**schema.org structured data** & **database support**
--**an advanced MCP server** for programmatic access.
 
-### Installation - Step 1: Generate logs.txt for your repo
+-**an advanced MCP server for programmatic access.**
 
-## First, create a text log of your commit data in your current repository.
+## Installation
 
-### If using git, run:
+### Generate logs.txt from commit data
+
+#### For git:
 ```bash
 git log -v > logs.txt
 ```
-### Or for mercurial:
-```
+#### For mercurial:
+```bash
 hg log -v > logs.txt
 ```
-### Warning: If you have a lot of commits, consider running overnight
+### 🎯 Warning: Run as a scheduled task if large (e.g. chron)
 
-It'll spit out some structured data that will look ~like this for every commit:
+The output will look ~like this for every commit:
 ```txt
 commit db89c01b219253e21310cd40353e3025089ea601
-Author: Your Name <youremail@your_cool_domain.com>
+Author: My Name <myemail@my_cool_domain.mcp>
 Date:   Mon Aug 25 06:38:24 2025 -0500
 
     Your Commit Message
@@ -76,14 +79,14 @@ Add this to your Claude Desktop configuration (`~/Library/Application Support/Cl
 }
 ```
 
-### Available Tools
+## MCP Capabilities
 
-#### 1. get_schema_type
-Get detailed information about a schema.org type.
+### Key Functions
 
-
-
-## Stack Info
+- **`create_default_chart_config()`**: Generate default configurations
+- **`validate_commit_data_file()`**: Validate and parse data files
+- **`generate_all_schemas()`**: Create schema.org structured data
+- **`create_chart_from_config()`**: Generate charts from configuration
 
 ### ✨ Data Validation
 - **Pydantic Models**: Type-safe data structures with automatic validation
@@ -285,8 +288,8 @@ The enhanced MCP server provides these validated tools:
 }
 ```
 
-## 📁 Project Structure
-
+## 📁 Appendix
+### Project Structure
 ```
 RepoViz/
 ├── README.md                  # This file
@@ -318,9 +321,9 @@ RepoViz/
     └── get_repo_name.sh
 ```
 
-## 🎨 Advanced Styling
+### 🎨 Advanced Styling
 
-### Custom Color Schemes
+#### Custom Color Schemes
 ```python
 # Professional blue theme
 plot_config = PlotConfig(
@@ -341,7 +344,7 @@ plot_config = PlotConfig(
 )
 ```
 
-### High-Resolution Output
+#### High-Resolution Output
 ```python
 plot_config = PlotConfig(
     dpi=600,              # Print quality
@@ -351,9 +354,9 @@ plot_config = PlotConfig(
 )
 ```
 
-## 📈 Data Validation
+### 📈 Data Validation
 
-### Automatic Validation
+#### Automatic Validation
 ```python
 from schemas import CommitCount, PeriodType
 
@@ -375,7 +378,7 @@ except ValidationError as e:
     print(f"Validation failed: {e}")
 ```
 
-### File Validation
+#### File Validation
 ```python
 from schemas import validate_commit_data_file
 
@@ -389,9 +392,9 @@ except ValueError as e:
     print(f"Data validation failed: {e}")
 ```
 
-## 🔍 Error Handling
+### 🔍 Error Handling
 
-### MCP Server Responses
+#### MCP Server Responses
 ```python
 from schemas import MCPToolResponse
 
@@ -411,9 +414,9 @@ response = MCPToolResponse(
 )
 ```
 
-## 🧪 Testing and Development
+### 🧪 Testing and Development
 
-### Run Examples
+#### Run Examples
 ```bash
 # Test all configurations
 python examples/example_configs.py
@@ -422,7 +425,7 @@ python examples/example_configs.py
 python enhanced_plot_scripts.py --type hour_bar --repo TestRepo
 ```
 
-### Validate Installation
+#### Validate Installation
 ```bash
 # Test imports
 python -c "import schemas, schema_org, enhanced_plot_scripts, database_schema; print('✅ All modules imported successfully')"
@@ -431,9 +434,9 @@ python -c "import schemas, schema_org, enhanced_plot_scripts, database_schema; p
 python -c "from database_schema import initialize_database; db = initialize_database(); print('✅ Database initialized')"
 ```
 
-## 🔧 Troubleshooting
+### 🔧 Troubleshooting
 
-### Common Issues
+#### Common Issues
 
 **Import Errors**
 ```bash
@@ -463,9 +466,9 @@ chmod +x *.sh
 python -c "from database_schema import initialize_database; initialize_database()"
 ```
 
-## 📚 API Reference
+### 📚 API Reference
 
-### Core Classes
+#### Core Classes
 
 - **`ChartConfig`**: Main chart configuration with validation
 - **`PlotConfig`**: Plot styling and appearance settings
@@ -474,18 +477,8 @@ python -c "from database_schema import initialize_database; initialize_database(
 - **`CommitCount`**: Validated commit count data
 - **`RepositoryInfo`**: Repository metadata
 
-### Key Functions
 
-- **`create_default_chart_config()`**: Generate default configurations
-- **`validate_commit_data_file()`**: Validate and parse data files
-- **`generate_all_schemas()`**: Create schema.org structured data
-- **`create_chart_from_config()`**: Generate charts from configuration
-
-## 🤝 Contributing
-
-This enhanced version maintains full backward compatibility while adding powerful new features. All original scripts and functionality remain unchanged.
-
-### Development Setup
+#### Development Setup
 ```bash
 # Install development dependencies
 pip install -e ".[dev]"
@@ -507,15 +500,13 @@ MIT License - see [LICENSE.md](LICENSE.md) for details.
 ## 👤 Author
 
 **Alyshia Ledlie**
-- Email: alyshialedlie@example.com
-- Project: Enhanced Git Commit Visualization Utilities
+- Email: alyshia@theintegritystudio.com
 
+- Site: https://www.aledlie.com
 
+- Project: Repository Structuring & Visualization
 
-1. **New features are opt-in**
-2. **Configuration files are optional**
-3. **Database support is optional**
-
+## Advanced Features
 To use enhanced features:
 ```bash
 # Use new enhanced scripts
@@ -525,7 +516,7 @@ python enhanced_plot_scripts.py
 python plot_commits_by_hour.py
 ```
 
-## 🎯 Roadmap
+## Want to contribute?  Suggested future roadmap items:
 
 - [ ] Web dashboard interface
 - [ ] Real-time commit monitoring
@@ -536,4 +527,3 @@ python plot_commits_by_hour.py
 
 ---
 
-**Enhanced Git Commit Visualization Utilities v2.0** - Bringing professional data validation, structured metadata, and advanced configuration to your Git analytics workflow.
