@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Monthly Commit Activity Chart - aledlie.github.io",
+  "description": "Pie chart showing commit distribution by month for aledlie.github.io repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-24T00:24:58.643925",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - aledlie.github.io"
+  },
+  "contentSize": "85764 bytes",
+  "contentUrl": "./Generated Data/aledlie_commits_by_month.png"
+}

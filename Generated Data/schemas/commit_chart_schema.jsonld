@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Combined Day/Month Commit Chart - aledlie.github.io",
+  "description": "Combined visualization of daily and monthly commit patterns for aledlie.github.io repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-24T00:24:51.156104",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - aledlie.github.io"
+  },
+  "contentSize": "130497 bytes",
+  "contentUrl": "./Generated Data/commit_chart.png"
+}

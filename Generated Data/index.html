@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepoViz - GitHub Repository Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .input-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1em;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .help-text {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            border: 2px solid #fcc;
+            color: #c00;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .repo-info {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .repo-info h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .chart-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            color: #666;
+        }
+
+        .insights {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .insights h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .insights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .insights li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 RepoViz</h1>
+            <p class="subtitle">Analyze commit patterns from any public GitHub repository</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="repoInput"
+                    placeholder="Enter GitHub repository (e.g., facebook/react or https://github.com/facebook/react)"
+                    value=""
+                >
+                <button id="analyzeBtn" onclick="analyzeRepo()">Analyze Repository</button>
+            </div>
+            <p class="help-text">
+                💡 Enter a public GitHub repository in the format "owner/repo" or paste the full GitHub URL
+            </p>
+            <div class="error" id="errorMessage"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Fetching commit data from GitHub...</p>
+            <p style="font-size: 0.9em; color: #666; margin-top: 10px;">This may take a moment for large repositories</p>
+        </div>
+
+        <div class="results" id="results">
+            <div class="repo-info">
+                <h2 id="repoName">Repository Analysis</h2>
+                <div class="stats" id="stats"></div>
+            </div>
+
+            <div class="insights" id="insights">
+                <h2>Key Insights</h2>
+                <ul id="insightsList"></ul>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h2 class="chart-title">Commits by Hour of Day</h2>
+                    <div class="chart-container">
+                        <canvas id="hourChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2 class="chart-title">Commits by Day of Week</h2>
+                    <div class="chart-container">
+                        <canvas id="dayChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2 class="chart-title">Commits by Month</h2>
+                    <div class="chart-container">
+                        <canvas id="monthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card full-width">
+                    <h2 class="chart-title">Commit Activity Over Time</h2>
+                    <div class="chart-container">
+                        <canvas id="timelineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>RepoViz - Powered by GitHub API & Chart.js</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Open source project | <a href="https://github.com/aledlie/RepoViz" style="color: #667eea;">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        let charts = {};
+
+        function parseRepoUrl(input) {
+            input = input.trim();
+
+            // If it's a GitHub URL
+            if (input.includes('github.com')) {
+                const match = input.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+                if (match) {
+                    return { owner: match[1], repo: match[2].replace('.git', '') };
+                }
+            }
+
+            // If it's owner/repo format
+            const parts = input.split('/');
+            if (parts.length === 2) {
+                return { owner: parts[0], repo: parts[1] };
+            }
+
+            return null;
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.classList.add('active');
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').classList.remove('active');
+        }
+
+        function showLoading() {
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('analyzeBtn').disabled = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+            document.getElementById('analyzeBtn').disabled = false;
+        }
+
+        async function fetchCommits(owner, repo) {
+            const commits = [];
+            let page = 1;
+            const perPage = 100;
+            const maxPages = 10; // Limit to 1000 commits for performance
+
+            while (page <= maxPages) {
+                const response = await fetch(
+                    `https://api.github.com/repos/${owner}/${repo}/commits?per_page=${perPage}&page=${page}`
+                );
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error('Repository not found. Please check the repository name and make sure it\'s public.');
+                    } else if (response.status === 403) {
+                        throw new Error('GitHub API rate limit exceeded. Please try again later.');
+                    } else {
+                        throw new Error(`Failed to fetch commits: ${response.statusText}`);
+                    }
+                }
+
+                const data = await response.json();
+                if (data.length === 0) break;
+
+                commits.push(...data);
+
+                if (data.length < perPage) break;
+                page++;
+            }
+
+            return commits;
+        }
+
+        function analyzeCommitData(commits) {
+            const hourCounts = new Array(24).fill(0);
+            const dayCounts = new Array(7).fill(0);
+            const monthCounts = new Array(12).fill(0);
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                              'July', 'August', 'September', 'October', 'November', 'December'];
+
+            const dailyActivity = {};
+
+            commits.forEach(commit => {
+                const date = new Date(commit.commit.author.date);
+                const hour = date.getHours();
+                const day = date.getDay();
+                const month = date.getMonth();
+                const dateStr = date.toISOString().split('T')[0];
+
+                hourCounts[hour]++;
+                dayCounts[day]++;
+                monthCounts[month]++;
+
+                if (!dailyActivity[dateStr]) {
+                    dailyActivity[dateStr] = 0;
+                }
+                dailyActivity[dateStr]++;
+            });
+
+            // Find peaks
+            const peakHour = hourCounts.indexOf(Math.max(...hourCounts));
+            const peakDay = dayCounts.indexOf(Math.max(...dayCounts));
+            const peakMonth = monthCounts.indexOf(Math.max(...monthCounts));
+
+            return {
+                hourCounts,
+                dayCounts,
+                monthCounts,
+                dailyActivity,
+                peakHour,
+                peakDay,
+                peakMonth,
+                totalCommits: commits.length,
+                dayNames,
+                monthNames
+            };
+        }
+
+        function generateInsights(data) {
+            const insights = [];
+
+            insights.push(`<strong>Total Commits Analyzed:</strong> ${data.totalCommits} commits`);
+
+            const peakHourPercent = ((data.hourCounts[data.peakHour] / data.totalCommits) * 100).toFixed(1);
+            insights.push(`<strong>Peak Hour:</strong> ${data.peakHour}:00 - ${data.peakHour + 1}:00 (${peakHourPercent}% of commits)`);
+
+            const peakDayPercent = ((data.dayCounts[data.peakDay] / data.totalCommits) * 100).toFixed(1);
+            insights.push(`<strong>Most Active Day:</strong> ${data.dayNames[data.peakDay]} (${peakDayPercent}% of commits)`);
+
+            const peakMonthPercent = ((data.monthCounts[data.peakMonth] / data.totalCommits) * 100).toFixed(1);
+            insights.push(`<strong>Most Active Month:</strong> ${data.monthNames[data.peakMonth]} (${peakMonthPercent}% of commits)`);
+
+            // Calculate work hours (9-5) vs off hours
+            const workHours = data.hourCounts.slice(9, 17).reduce((a, b) => a + b, 0);
+            const workHoursPercent = ((workHours / data.totalCommits) * 100).toFixed(1);
+            insights.push(`<strong>Work Hours (9 AM - 5 PM):</strong> ${workHoursPercent}% of commits`);
+
+            // Weekend activity
+            const weekendCommits = data.dayCounts[0] + data.dayCounts[6];
+            const weekendPercent = ((weekendCommits / data.totalCommits) * 100).toFixed(1);
+            insights.push(`<strong>Weekend Activity:</strong> ${weekendPercent}% of commits on weekends`);
+
+            return insights;
+        }
+
+        function createChart(canvasId, type, labels, data, label) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+
+            // Destroy existing chart if it exists
+            if (charts[canvasId]) {
+                charts[canvasId].destroy();
+            }
+
+            charts[canvasId] = new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        backgroundColor: type === 'pie' ? [
+                            '#667eea', '#764ba2', '#f093fb', '#4facfe',
+                            '#43e97b', '#fa709a', '#fee140', '#30cfd0',
+                            '#a8edea', '#fed6e3', '#c471ed', '#12c2e9'
+                        ] : 'rgba(102, 126, 234, 0.6)',
+                        borderColor: type === 'pie' ? '#fff' : 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: type === 'pie',
+                            position: 'right'
+                        }
+                    },
+                    ...(type === 'bar' && {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    })
+                }
+            });
+        }
+
+        async function analyzeRepo() {
+            hideError();
+
+            const input = document.getElementById('repoInput').value;
+            const repoInfo = parseRepoUrl(input);
+
+            if (!repoInfo) {
+                showError('Invalid repository format. Please use "owner/repo" or a GitHub URL.');
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const commits = await fetchCommits(repoInfo.owner, repoInfo.repo);
+
+                if (commits.length === 0) {
+                    throw new Error('No commits found in this repository.');
+                }
+
+                const data = analyzeCommitData(commits);
+
+                // Update repo name
+                document.getElementById('repoName').textContent = `${repoInfo.owner}/${repoInfo.repo}`;
+
+                // Update stats
+                const statsHtml = `
+                    <div class="stat-box">
+                        <div class="stat-value">${data.totalCommits}</div>
+                        <div class="stat-label">Total Commits</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${data.dayNames[data.peakDay]}</div>
+                        <div class="stat-label">Most Active Day</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${data.monthNames[data.peakMonth]}</div>
+                        <div class="stat-label">Most Active Month</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${data.peakHour}:00</div>
+                        <div class="stat-label">Peak Hour</div>
+                    </div>
+                `;
+                document.getElementById('stats').innerHTML = statsHtml;
+
+                // Generate insights
+                const insights = generateInsights(data);
+                document.getElementById('insightsList').innerHTML =
+                    insights.map(insight => `<li>${insight}</li>`).join('');
+
+                // Create charts
+                createChart('hourChart', 'bar',
+                    Array.from({length: 24}, (_, i) => `${i}:00`),
+                    data.hourCounts,
+                    'Commits per Hour'
+                );
+
+                createChart('dayChart', 'pie',
+                    data.dayNames,
+                    data.dayCounts,
+                    'Commits by Day'
+                );
+
+                createChart('monthChart', 'bar',
+                    data.monthNames,
+                    data.monthCounts,
+                    'Commits per Month'
+                );
+
+                // Timeline chart
+                const sortedDates = Object.keys(data.dailyActivity).sort();
+                createChart('timelineChart', 'line',
+                    sortedDates,
+                    sortedDates.map(date => data.dailyActivity[date]),
+                    'Daily Commits'
+                );
+
+                hideLoading();
+                document.getElementById('results').classList.add('active');
+
+            } catch (error) {
+                hideLoading();
+                showError(error.message);
+                console.error('Error:', error);
+            }
+        }
+
+        // Allow Enter key to trigger analysis
+        document.getElementById('repoInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                analyzeRepo();
+            }
+        });
+
+        // Load example on page load (optional)
+        // window.addEventListener('load', function() {
+        //     document.getElementById('repoInput').value = 'facebook/react';
+        //     analyzeRepo();
+        // });
+    </script>
+</body>
+</html>

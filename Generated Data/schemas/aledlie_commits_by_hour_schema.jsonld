@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Hourly Commit Distribution Chart - aledlie.github.io",
+  "description": "Bar chart showing commit frequency by hour of day for aledlie.github.io repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-24T00:24:57.755422",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - aledlie.github.io"
+  },
+  "contentSize": "109041 bytes",
+  "contentUrl": "./Generated Data/aledlie_commits_by_hour.png"
+}
