@@ -1,6 +1,6 @@
 # RepoViz MCP Server
 
-**Code Observability Utils** - Bringing professional data validation, structured metadata, and advanced configuration to your Git/mercurial analytics workflow.
+**Code Observability Utils** - Bringing professional data validation, structured metadata, and advanced configuration to your git/hg analytics workflow.
 Provides a comprehensive toolkit for structuring, storing, analyzing, and visualizing your repo code & commit patterns through schematization & interactive charts and graphs.
 
 ## Features
@@ -41,8 +41,7 @@ And like ~this for hg:
   files:       apply_laplacian.f90
   description: debug_master
   Topic: Fixed minor error in Laplacian.
-  Description:
-  * Factor of two error incorrect in the Laplacian.
+  Description: Factor of two error incorrect in the Laplacian.
 ```
 
 ## MCP Server Installation
@@ -84,7 +83,7 @@ Add this to your Claude Desktop configuration (`~/Library/Application Support/Cl
   "mcpServers": {
     "RepoViz": {
       "command": "python",
-      "args": ["/path/to/RepoViz/mcp_server.py"]
+      "args": ["/path/to/RepoViz/enhanced_mcp_server.py"]
     }
   }
 }
