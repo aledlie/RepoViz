@@ -23,4 +23,5 @@ if [ -z "$repo_name" ]; then
 fi
 
 # Output the repository name
-echo "Repository name: $repo_name"
+echo "Repository name: $repo_name" >&2
+echo "$repo_name"

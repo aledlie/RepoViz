@@ -430,35 +430,80 @@ def initialize_database(database_url: str = "sqlite:///./Generated Data/git_viz.
 
 
 def import_commit_data_from_files(db_manager: DatabaseManager, repo_name: str) -> None:
-    """Import commit data from existing text files."""
-    from schemas import validate_commit_data_file
+    """Import and update commit summary data from existing text files."""
+    from schemas import validate_commit_data_file, PeriodType
     
     repo = db_manager.get_or_create_repository(repo_name)
-    
-    # Import hourly data
+    session = db_manager.get_session()
+
+    def _update_summaries_from_file(file_path: str, period_type: PeriodType):
+        """Helper to process a single data file and update summaries."""
+        try:
+            commit_data = validate_commit_data_file(file_path)
+            print(f"Found {len(commit_data)} records in {os.path.basename(file_path)}")
+            
+            for item in commit_data:
+                # Find existing summary or create a new one
+                summary = session.query(CommitSummary).filter_by(
+                    repository_id=repo.id,
+                    period_type=period_type.value,
+                    period_value=item.period
+                ).first()
+                
+                if not summary:
+                    summary = CommitSummary(
+                        repository_id=repo.id,
+                        period_type=period_type.value,
+                        period_value=item.period
+                    )
+                
+                # Update data and add to session
+                summary.commit_count = item.count
+                session.add(summary)
+                
+        except FileNotFoundError:
+            print(f"Warning: Data file not found: {file_path}")
+        except ValueError as e:
+            print(f"Error validating {file_path}: {e}")
+
     try:
-        hour_data = validate_commit_data_file("./Generated Data/commit_counts.txt")
-        for commit_count in hour_data:
-            # This is aggregated data, so we can't import individual commits
-            # Instead, we'll create summary records
-            pass
-    except FileNotFoundError:
-        print("Hourly commit data file not found")
-    
-    # Update summaries
-    db_manager.update_commit_summaries(repo.id)
-    print(f"Imported data for repository: {repo_name}")
+        # Process all data files
+        _update_summaries_from_file("./commit_counts.txt", PeriodType.HOUR)
+        _update_summaries_from_file("./commit_counts_day.txt", PeriodType.DAY)
+        _update_summaries_from_file("./commit_counts_month.txt", PeriodType.MONTH)
+        
+        # Commit all changes
+        session.commit()
+        print(f"Successfully imported and updated summaries for repository: {repo_name}")
+        
+    except Exception as e:
+        session.rollback()
+        print(f"An error occurred during import: {e}")
+    finally:
+        session.close()
 
 
 if __name__ == "__main__":
     # Example usage
+    print("Initializing database...")
     db_manager = initialize_database()
     print("Database initialized successfully!")
     
-    # Example: Create a repository
-    repo = db_manager.get_or_create_repository("RepoViz", "https://github.com/alyshialedlie/RepoViz")
-    print(f"Repository created: {repo}")
+    # Define a repository name (replace with dynamic detection if needed)
+    repo_name = "RepoViz"
+    print(f"\nImporting data for repository: {repo_name}")
     
-    # Example: Get statistics
+    # Run the import process
+    import_commit_data_from_files(db_manager, repo_name)
+    
+    # Verify by getting statistics
+    repo = db_manager.get_or_create_repository(repo_name)
     stats = db_manager.get_commit_statistics(repo.id)
-    print(f"Statistics: {stats}")
+    print("\n--- Verification ---")
+    print(f"Statistics for {repo.name}:")
+    print(f"  Total Commits (from summaries): {sum(stats.get('hourly_distribution', {}).values())}")
+    print(f"  Hourly data points: {len(stats.get('hourly_distribution', {}))}")
+    print(f"  Daily data points: {len(stats.get('daily_distribution', {}))}")
+    print(f"  Monthly data points: {len(stats.get('monthly_distribution', {}))}")
+    print("--------------------")
+

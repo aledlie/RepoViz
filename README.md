@@ -11,82 +11,54 @@ Provides a comprehensive toolkit for structuring, storing, analyzing, and visual
 
 -**an advanced MCP server for programmatic access.**
 
-## Installation
+## Quick Start
 
-### Generate logs.txt from commit data
-### 🎯 Warning: Run as a scheduled task if very large (e.g. chron)
+### Installation (Choose one method)
 
-#### For git:
+**Option 1: Using uvx (Recommended - Easiest)**
 ```bash
-git log -v > logs.txt
+uvx git-commit-visualization-utilities
 ```
-#### For mercurial:
+
+**Option 2: Clone and Install**
 ```bash
-hg log -v > logs.txt
-```
-
-The output will look ~like this for every git commit:
-```txt
-commit db89c01b219253e21310cd40353e3025089ea601
-Author: My Name <myemail@my_cool_domain.mcp>
-Date:   Mon Aug 25 06:38:24 2025 -0500
-
-    Your Commit Message
-```
-And like ~this for hg:
-```txt
-  changeset:   59:783a1a00679c0i
-  user:        My Name <user@university.edu>
-  date:        Tue Jan 07 08:35:49 2024 -0500
-  files:       apply_laplacian.f90
-  description: debug_master
-  Topic: Fixed minor error in Laplacian.
-  Description: Factor of two error incorrect in the Laplacian.
-```
-
-## MCP Server Installation
-### Easy Install:
-```bash
-# Clone the repository
 git clone https://github.com/aledlie/RepoViz.git
 cd RepoViz
-
-# Run the setup script
-python setup_enhanced.py
-
+./install.sh
 ```
-### Manual Install:
+
+**Option 3: Install from PyPI**
 ```bash
-# Activate the environment
-source activate.sh  # On macOS/Linux
-# or
-activate.bat       # On Windows
-
-# or create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Make scripts executable (Unix-like systems)
-chmod +x *.sh
+pip install git-commit-visualization-utilities
 ```
-## Usage
 
-### With Claude Desktop
+### Claude Desktop Setup
 
-Add this to your Claude Desktop configuration (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+The install script will show you the exact configuration for your system. Add it to your Claude Desktop config:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
+Example:
 ```json
 {
   "mcpServers": {
-    "RepoViz": {
-      "command": "python",
+    "git-visualization": {
+      "command": "python3",
       "args": ["/path/to/RepoViz/enhanced_mcp_server.py"]
     }
   }
 }
+```
+
+### Generate Commit Data
+
+For your repository:
+```bash
+# Git
+git log -v > logs.txt
+
+# Mercurial
+hg log -v > logs.txt
 ```
 
 ## MCP Capabilities
@@ -491,10 +463,13 @@ python -c "from database_schema import initialize_database; initialize_database(
 #### Development Setup
 ```bash
 # Install development dependencies
-pip install -e ".[dev]"
+pip install -r requirements-test.txt
 
 # Run tests
-pytest
+./run_tests.sh
+
+# Or run pytest directly
+pytest tests/ -v
 
 # Format code
 black .
@@ -502,6 +477,31 @@ black .
 # Type checking
 mypy .
 ```
+
+### 🧪 Running Tests
+
+The project includes comprehensive unit and integration tests:
+
+```bash
+# Quick test run
+pytest tests/
+
+# With coverage report
+./run_tests.sh
+
+# Run specific test file
+pytest tests/test_schemas.py -v
+
+# Run tests matching a pattern
+pytest tests/ -k "test_install" -v
+```
+
+Test coverage includes:
+- ✅ Schema validation and Pydantic models
+- ✅ Database operations and SQLAlchemy ORM
+- ✅ Chart generation and matplotlib integration
+- ✅ Installation script validation
+- ✅ Project structure and configuration
 
 ## 📄 License
 

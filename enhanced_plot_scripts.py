@@ -43,7 +43,7 @@ class EnhancedPlotter:
     def load_commit_data(self, data_type: str) -> List[CommitCount]:
         """Load and validate commit data."""
         file_mapping = {
-            "hour": "./Generated Data/commit_counts.txt",
+            "hour": "./Generated Data/commit_counts_hour.txt",
             "day": "./Generated Data/commit_counts_day.txt",
             "month": "./Generated Data/commit_counts_month.txt"
         }
@@ -447,7 +447,7 @@ def main():
         
         # Print configuration used
         print(f"\nConfiguration used:")
-        print(config.json(indent=2))
+        print(config.model_dump_json(indent=2))
         
     except Exception as e:
         print(f"Error creating chart: {e}")

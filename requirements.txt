@@ -1,39 +1,6 @@
-# Git Commit Visualization Utilities - Requirements
-# Core dependencies for data validation, visualization, and MCP server
-
-# Data validation and serialization
+# Core dependencies only - minimal installation
 pydantic>=2.0.0
-pydantic[email]>=2.0.0
-
-# Data visualization
 matplotlib>=3.7.0
 numpy>=1.24.0
-
-# MCP (Model Context Protocol) server
-mcp[cli]>=0.1.0
-
-# Optional database support
-sqlalchemy>=2.0.0
-alembic>=1.12.0  # For database migrations
-
-# Data processing utilities
+mcp>=0.1.0
 python-dateutil>=2.8.0
-
-# File handling and validation
-pathlib2>=2.3.0; python_version < "3.4"
-
-# Run the server
-
-# JSON schema validation (optional)
-jsonschema>=4.0.0
-
-# Development and testing dependencies (optional)
-pytest>=7.0.0
-pytest-cov>=4.0.0
-black>=23.0.0
-flake8>=6.0.0
-mypy>=1.0.0
-
-# Documentation (optional)
-sphinx>=6.0.0
-sphinx-rtd-theme>=1.2.0

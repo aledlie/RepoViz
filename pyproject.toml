@@ -7,7 +7,7 @@ name = "git-commit-visualization-utilities"
 version = "2.0.0"
 description = "A comprehensive toolkit for analyzing and visualizing Git commit patterns with Pydantic validation and schema.org support"
 readme = "README.md"
-license = {file = "LICENSE.md"}
+license = { text = "MIT" }
 authors = [
     {name = "Alyshia Ledlie", email = "alyshia@inventoryai.com"}
 ]
@@ -22,7 +22,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -41,9 +40,8 @@ dependencies = [
     "pydantic>=2.0.0",
     "matplotlib>=3.7.0",
     "numpy>=1.24.0",
-    "mcp[cli]>=0.1.0",
+    "mcp>=0.1.0",
     "python-dateutil>=2.8.0"
-    "uv>=0.8.13"
 ]
 
 [project.optional-dependencies]
@@ -66,7 +64,7 @@ validation = [
     "jsonschema>=4.0.0"
 ]
 all = [
-    "git-commit-visualization-utilities[database,dev,docs,validation]"
+    "git-commit-visualization-utilities[database,dev,docs,validation]",
 ]
 
 [project.urls]
@@ -81,8 +79,12 @@ git-viz = "enhanced_plot_scripts:main"
 git-viz-server = "enhanced_mcp_server:main"
 git-viz-examples = "examples.example_configs:main"
 
+[project.entry-points."mcp.servers"]
+git-visualization = "enhanced_mcp_server:main"
+
 [tool.setuptools]
-packages = ["schemas", "schema_org", "enhanced_plot_scripts", "database_schema", "examples"]
+py-modules = ["schemas", "schema_org", "enhanced_plot_scripts", "database_schema"]
+packages = ["examples"]
 include-package-data = true
 
 [tool.setuptools.package-data]
