@@ -60,3 +60,18 @@ dmypy.json
 # Logs
 *.log
 logs.txt
+
+# Generated data and reports
+Generated Data/
+reports/
+*.db
+
+# Configuration files (may contain secrets)
+mcp.json
+config.json
+
+# Package lock files
+uv.lock
+
+# Commit data files (generated from git history)
+commit_counts*.txt
