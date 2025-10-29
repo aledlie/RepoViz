@@ -1,0 +1,190 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://luislandscaping.com/#business",
+  "name": "Luis Landscaping & Handyman Services",
+  "description": "Professional tree service, landscaping, lawn maintenance, handyman services, and garden services in Austin, TX",
+  "telephone": "(737) 420-7339",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12028 Timber Heights Drive",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78754",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "15:00"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 30.3672,
+    "longitude": -97.6431
+  },
+  "priceRange": "$$",
+  "areaServed": [
+    "Austin, TX",
+    "Round Rock, TX",
+    "Cedar Park, TX",
+    "Pflugerville, TX"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping & Handyman Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://luislandscaping.com/#service-tree"
+        },
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://luislandscaping.com/#service-landscaping"
+        },
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://luislandscaping.com/#service-lawn"
+        },
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://luislandscaping.com/#service-handyman"
+        },
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://luislandscaping.com/#service-garden"
+        },
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "(737) 420-7339",
+    "contactType": "Customer Service",
+    "availableLanguage": [
+      "English",
+      "Spanish"
+    ]
+  },
+  "services": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://luislandscaping.com/#service-tree",
+      "name": "Tree Service",
+      "description": "Professional tree trimming, pruning, and removal services. Keeping your trees healthy and your property safe.",
+      "provider": {
+        "@id": "https://luislandscaping.com/#business"
+      },
+      "serviceType": "Tree Service",
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin, TX"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://luislandscaping.com/#service-landscaping",
+      "name": "Landscaping",
+      "description": "Complete landscaping design and installation. Transform your outdoor space with beautiful, sustainable landscapes.",
+      "provider": {
+        "@id": "https://luislandscaping.com/#business"
+      },
+      "serviceType": "Landscaping",
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin, TX"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://luislandscaping.com/#service-lawn",
+      "name": "Lawn Maintenance",
+      "description": "Regular lawn mowing, edging, trimming, and maintenance to keep your lawn looking pristine all year round.",
+      "provider": {
+        "@id": "https://luislandscaping.com/#business"
+      },
+      "serviceType": "Lawn Maintenance",
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin, TX"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://luislandscaping.com/#service-handyman",
+      "name": "Handyman Services",
+      "description": "General handyman services for home repairs, installations, and maintenance tasks.",
+      "provider": {
+        "@id": "https://luislandscaping.com/#business"
+      },
+      "serviceType": "Handyman Services",
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin, TX"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://luislandscaping.com/#service-garden",
+      "name": "Garden Services",
+      "description": "Professional garden design, planting, weeding, and maintenance to create beautiful outdoor living spaces.",
+      "provider": {
+        "@id": "https://luislandscaping.com/#business"
+      },
+      "serviceType": "Garden Services",
+      "areaServed": {
+        "@type": "City",
+        "name": "Austin, TX"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Monthly Commit Activity Chart - IntegrityStudio",
+  "description": "Pie chart showing commit distribution by month for IntegrityStudio repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-28T19:34:29.779760",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - IntegrityStudio"
+  },
+  "contentSize": "247752 bytes",
+  "contentUrl": "./Generated Data/integrity_studio_month_commits.png"
+}

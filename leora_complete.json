@@ -1,0 +1,354 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.leorahomehealth.com/#organization",
+  "name": "Leora Home Health",
+  "description": "Compassionate in-home health care services in Central Texas, offering Personal Assistant Services (PAS), Home Health Aide (HHA), and skilled nursing care.",
+  "url": "https://www.leorahomehealth.com",
+  "image": "https://cdn.prod.website-files.com/6700b1003622e22dbd310d9f/67a7bfffbb22352384ed25b4_LHH-OG-Home.jpg",
+  "logo": "https://cdn.prod.website-files.com/6700b1003622e22dbd310d9f/670f45bf03cdb5f2ed97b8f2_LHH-Logo.svg",
+  "telephone": "+1-512-222-8103",
+  "email": "appointments@leorahomehealth.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://facebook.com/leorahomehealth",
+    "https://twitter.com/leoarhomehealth",
+    "https://instagram.com/leorahomehealth"
+  ],
+  "price_range": "$$",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 30.2672,
+    "longitude": -97.7431
+  },
+  "areaServed": [
+    {
+      "@context": "https://schema.org",
+      "@type": "City",
+      "name": "Austin",
+      "containedIn": {
+        "@context": "https://schema.org",
+        "@type": "State",
+        "name": "Texas"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "State",
+      "name": "Texas"
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Home Health Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.leorahomehealth.com/#skilled-nursing",
+          "name": "Skilled Nursing",
+          "description": "Professional nursing care delivered in the comfort of your home by licensed nurses.",
+          "provider": {
+            "@id": "https://www.leorahomehealth.com/#organization"
+          },
+          "areaServed": {
+            "@context": "https://schema.org",
+            "@type": "State",
+            "name": "Texas"
+          },
+          "serviceType": "Skilled Nursing"
+        },
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.leorahomehealth.com/#home-health-aide",
+          "name": "Home Health Aide (HHA)",
+          "description": "Certified home health aides providing personal care and assistance with daily activities.",
+          "provider": {
+            "@id": "https://www.leorahomehealth.com/#organization"
+          },
+          "areaServed": {
+            "@context": "https://schema.org",
+            "@type": "State",
+            "name": "Texas"
+          },
+          "serviceType": "Home Health Aide (HHA)"
+        },
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.leorahomehealth.com/#personal-assistant",
+          "name": "Personal Assistant Services (PAS)",
+          "description": "Professional caregivers assist with routine home activities (ADLs) while offering genuine companionship.",
+          "provider": {
+            "@id": "https://www.leorahomehealth.com/#organization"
+          },
+          "areaServed": {
+            "@context": "https://schema.org",
+            "@type": "State",
+            "name": "Texas"
+          },
+          "serviceType": "Personal Assistant Services (PAS)"
+        },
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.leorahomehealth.com/#medical-social-services",
+          "name": "Medical Social Services",
+          "description": "Professional social work services to support patients and families.",
+          "provider": {
+            "@id": "https://www.leorahomehealth.com/#organization"
+          },
+          "areaServed": {
+            "@context": "https://schema.org",
+            "@type": "State",
+            "name": "Texas"
+          },
+          "serviceType": "Medical Social Services"
+        },
+        "priceCurrency": "USD"
+      }
+    ]
+  },
+  "services": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.leorahomehealth.com/#skilled-nursing",
+      "name": "Skilled Nursing",
+      "description": "Professional nursing care delivered in the comfort of your home by licensed nurses.",
+      "provider": {
+        "@id": "https://www.leorahomehealth.com/#organization"
+      },
+      "areaServed": {
+        "@context": "https://schema.org",
+        "@type": "State",
+        "name": "Texas"
+      },
+      "serviceType": "Skilled Nursing"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.leorahomehealth.com/#home-health-aide",
+      "name": "Home Health Aide (HHA)",
+      "description": "Certified home health aides providing personal care and assistance with daily activities.",
+      "provider": {
+        "@id": "https://www.leorahomehealth.com/#organization"
+      },
+      "areaServed": {
+        "@context": "https://schema.org",
+        "@type": "State",
+        "name": "Texas"
+      },
+      "serviceType": "Home Health Aide (HHA)"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.leorahomehealth.com/#personal-assistant",
+      "name": "Personal Assistant Services (PAS)",
+      "description": "Professional caregivers assist with routine home activities (ADLs) while offering genuine companionship.",
+      "provider": {
+        "@id": "https://www.leorahomehealth.com/#organization"
+      },
+      "areaServed": {
+        "@context": "https://schema.org",
+        "@type": "State",
+        "name": "Texas"
+      },
+      "serviceType": "Personal Assistant Services (PAS)"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.leorahomehealth.com/#medical-social-services",
+      "name": "Medical Social Services",
+      "description": "Professional social work services to support patients and families.",
+      "provider": {
+        "@id": "https://www.leorahomehealth.com/#organization"
+      },
+      "areaServed": {
+        "@context": "https://schema.org",
+        "@type": "State",
+        "name": "Texas"
+      },
+      "serviceType": "Medical Social Services"
+    }
+  ],
+  "products": [
+    {
+      "variant_id": "6700b1003622e22dbd310f51",
+      "product_id": "6700b1003622e22dbd310f39",
+      "product_handle": "basic",
+      "product_name": "Basic",
+      "product_type": "Advanced",
+      "product_categories": "Basic",
+      "tier": "Basic",
+      "duration": "Monthly",
+      "price": "2999.00",
+      "compare_at_price": "3999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2023-10-31 14:00:20",
+      "updated_on": "2024-01-29 19:28:06",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "variant_id": "6700b1003622e22dbd310f52",
+      "product_id": "6700b1003622e22dbd310f39",
+      "product_handle": "basic",
+      "product_name": "Basic",
+      "product_type": "Advanced",
+      "product_categories": "Basic",
+      "tier": "Basic",
+      "duration": "Yearly",
+      "price": "4999.00",
+      "compare_at_price": "5999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2023-10-31 14:00:20",
+      "updated_on": "2024-01-29 19:28:06",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "variant_id": "6700b1003622e22dbd310f53",
+      "product_id": "6700b1003622e22dbd310f38",
+      "product_handle": "standard",
+      "product_name": "Standard",
+      "product_type": "Advanced",
+      "product_categories": "Standard",
+      "tier": "Standard",
+      "duration": "Monthly",
+      "price": "3999.00",
+      "compare_at_price": "4999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2023-10-31 14:00:09",
+      "updated_on": "2024-01-29 19:27:37",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "variant_id": "6700b1003622e22dbd310f54",
+      "product_id": "6700b1003622e22dbd310f38",
+      "product_handle": "standard",
+      "product_name": "Standard",
+      "product_type": "Advanced",
+      "product_categories": "Standard",
+      "tier": "Standard",
+      "duration": "Yearly",
+      "price": "5999.00",
+      "compare_at_price": "6999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2023-10-31 14:00:09",
+      "updated_on": "2024-01-29 19:27:37",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "variant_id": "6700b1003622e22dbd310f75",
+      "product_id": "6700b1003622e22dbd310f3a",
+      "product_handle": "luxury",
+      "product_name": "Luxury",
+      "product_type": "Advanced",
+      "product_categories": "Luxury",
+      "tier": "Luxury",
+      "duration": "Yearly",
+      "price": "6999.00",
+      "compare_at_price": "7999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2021-11-26 05:28:57",
+      "updated_on": "2024-01-29 19:27:46",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "variant_id": "6700b1003622e22dbd310f50",
+      "product_id": "6700b1003622e22dbd310f3a",
+      "product_handle": "luxury",
+      "product_name": "Luxury",
+      "product_type": "Advanced",
+      "product_categories": "Luxury",
+      "tier": "Luxury",
+      "duration": "Monthly",
+      "price": "4999.00",
+      "compare_at_price": "5999.00",
+      "tax_class": "standard-taxable",
+      "requires_shipping": false,
+      "created_on": "2021-11-26 05:28:57",
+      "updated_on": "2024-01-29 19:27:46",
+      "published_on": "2024-10-05 22:12:53"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Basic",
+      "slug": "basic",
+      "description": "Mauris fringilla ligula consequat dolor iaculis, vitae euismod odio condimentum. Ut sit amet finibus libero.",
+      "collection_id": "6700b1003622e22dbd310e23",
+      "item_id": "6700b1003622e22dbd310f4f",
+      "archived": false,
+      "draft": false,
+      "created_on": "2024-01-29 19:28:05",
+      "updated_on": "2024-01-29 19:28:05",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "name": "Standard",
+      "slug": "standard",
+      "description": "Mauris fringilla ligula consequat dolor iaculis, vitae euismod odio condimentum. Ut sit amet finibus libero.",
+      "collection_id": "6700b1003622e22dbd310e23",
+      "item_id": "6700b1003622e22dbd310f4e",
+      "archived": false,
+      "draft": false,
+      "created_on": "2024-01-29 19:27:36",
+      "updated_on": "2024-01-29 19:27:36",
+      "published_on": "2024-10-05 22:12:53"
+    },
+    {
+      "name": "Luxury",
+      "slug": "luxury",
+      "description": "Mauris fringilla ligula consequat dolor iaculis, vitae euismod odio condimentum. Ut sit amet finibus libero.",
+      "collection_id": "6700b1003622e22dbd310e23",
+      "item_id": "6700b1003622e22dbd310f3b",
+      "archived": false,
+      "draft": false,
+      "created_on": "2024-01-29 19:26:38",
+      "updated_on": "2024-01-29 19:27:45",
+      "published_on": "2024-10-05 22:12:53"
+    }
+  ]
+}

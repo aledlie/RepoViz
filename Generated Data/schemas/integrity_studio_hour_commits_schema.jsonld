@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Hourly Commit Distribution Chart - IntegrityStudio",
+  "description": "Bar chart showing commit frequency by hour of day for IntegrityStudio repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-28T19:32:51.401493",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - IntegrityStudio"
+  },
+  "contentSize": "138099 bytes",
+  "contentUrl": "./Generated Data/integrity_studio_hour_commits.png"
+}

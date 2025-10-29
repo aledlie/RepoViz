@@ -1,0 +1,239 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://integritystudio.ai/#organization",
+  "name": "Integrity Studio",
+  "description": "AI consultancy helping nonprofits leverage automation to increase funding, reduce costs, and amplify mission impact.",
+  "url": "https://integritystudio.ai/",
+  "image": "https://integritystudio.ai/og-image.jpg",
+  "alternate_name": "The Integrity Studio",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://integritystudio.ai/logo.png",
+    "width": 512,
+    "height": 512
+  },
+  "email": "hello@integritystudio.ai",
+  "telephone": "+1-512-829-1644",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "founder": {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://integritystudio.ai/#founder",
+    "name": "Alyshia Ledlie",
+    "url": "https://calendly.com/alyshialedlie",
+    "jobTitle": "Founder & AI Consultant",
+    "email": "hello@integritystudio.ai",
+    "worksFor": {
+      "@id": "https://integritystudio.ai/#organization"
+    },
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Nonprofit Technology",
+      "AI Compliance",
+      "Automation",
+      "Grant Writing",
+      "Fundraising Technology"
+    ]
+  },
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Nonprofit Technology",
+    "AI Consulting",
+    "Compliance and Safety",
+    "Automation",
+    "Impact Measurement",
+    "Grant Management",
+    "Donor Engagement"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "@id": "https://integritystudio.ai/#services",
+    "name": "AI Solutions for Nonprofits",
+    "itemListElement": [
+      {
+        "@id": "https://integritystudio.ai/#service-ai-integration"
+      },
+      {
+        "@id": "https://integritystudio.ai/#service-compliance"
+      },
+      {
+        "@id": "https://integritystudio.ai/#service-growth"
+      },
+      {
+        "@id": "https://integritystudio.ai/#service-impact"
+      },
+      {
+        "@id": "https://integritystudio.ai/#service-training"
+      },
+      {
+        "@id": "https://integritystudio.ai/#service-custom"
+      }
+    ]
+  },
+  "founding_date": "2024",
+  "slogan": "Empowering Nonprofits Through AI-Aware Compliance",
+  "sameAs": [
+    "https://calendly.com/alyshialedlie",
+    "https://www.linkedin.com/company/integrity-studio",
+    "https://twitter.com/integritystudio"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-512-829-1644",
+    "email": "hello@integritystudio.ai",
+    "contactType": "Sales",
+    "areaServed": "US",
+    "availableLanguage": [
+      "English"
+    ]
+  },
+  "services": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-ai-integration",
+      "name": "AI Integration & Automation",
+      "description": "Streamline operations with intelligent automation using Airtable, Zapier, and Google for Nonprofits. Automate donor acknowledgments, intake forms, and grant tracking.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "AI Integration",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Nonprofit Organizations",
+        "name": "Mission-driven organizations and nonprofits"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "2500",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-compliance",
+      "name": "Compliance & Safety",
+      "description": "Ensure your AI implementations meet regulatory requirements and ethical standards. Build trust and safety layers early in your organization's digital transformation.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "Compliance Consulting",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "3500",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-growth",
+      "name": "Strategic Growth Planning",
+      "description": "Develop sustainable funding strategies with AI-powered grant matching, donor engagement optimization, and performance tracking systems.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "Strategic Planning",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "5000",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-impact",
+      "name": "Impact Measurement",
+      "description": "Create comprehensive dashboards and reporting systems to track your organization's impact, measure AI ROI, and demonstrate value to stakeholders.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "Analytics and Reporting",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "2000",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-training",
+      "name": "Team Training & Support",
+      "description": "Empower your team with AI literacy training, best practices workshops, and ongoing support to maximize your technology investments.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "Training and Education",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "1500",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://integritystudio.ai/#service-custom",
+      "name": "Custom Solutions",
+      "description": "Tailored AI solutions designed specifically for your organization's unique needs, mission, and operational requirements.",
+      "provider": {
+        "@id": "https://integritystudio.ai/#organization"
+      },
+      "serviceType": "Custom Development",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "description": "Custom pricing based on project scope"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Daily Commit Pattern Chart - IntegrityStudio",
+  "description": "Pie chart showing commit distribution by day of week for IntegrityStudio repository",
+  "creator": {
+    "@type": "Person",
+    "name": "Alyshia Ledlie",
+    "email": "alyshialedlie@example.com"
+  },
+  "dateCreated": "2025-10-28T19:33:52.950677",
+  "license": "https://opensource.org/licenses/MIT",
+  "encodingFormat": "image/png",
+  "genre": "Data Visualization",
+  "keywords": [
+    "data visualization",
+    "git commits",
+    "charts",
+    "repository analytics",
+    "software development metrics"
+  ],
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Git Commit Data - IntegrityStudio"
+  },
+  "contentSize": "197406 bytes",
+  "contentUrl": "./Generated Data/integrity_studio_day_commits.png"
+}

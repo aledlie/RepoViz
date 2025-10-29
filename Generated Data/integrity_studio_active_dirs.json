@@ -1,0 +1,67 @@
+{
+  "repository": "IntegrityStudioClients",
+  "analyzed_at": "2025-10-28",
+  "total_directories": 5,
+  "directories": [
+    {
+      "name": "Leora",
+      "file_count": 313,
+      "size_bytes": 19376484,
+      "size_mb": 18.48,
+      "languages": [
+        "HTML",
+        "JavaScript",
+        "Markdown"
+      ],
+      "language_str": "HTML, JavaScript, Markdown"
+    },
+    {
+      "name": "fisterra",
+      "file_count": 162,
+      "size_bytes": 1080850,
+      "size_mb": 1.03,
+      "languages": [
+        "JavaScript",
+        "Markdown",
+        "Python"
+      ],
+      "language_str": "JavaScript, Markdown, Python"
+    },
+    {
+      "name": "InspiredMovement",
+      "file_count": 66,
+      "size_bytes": 306000,
+      "size_mb": 0.29,
+      "languages": [
+        "JavaScript",
+        "Markdown",
+        "HTML"
+      ],
+      "language_str": "JavaScript, Markdown, HTML"
+    },
+    {
+      "name": "ATXMovementAlliance",
+      "file_count": 53,
+      "size_bytes": 541797,
+      "size_mb": 0.52,
+      "languages": [
+        "TypeScript React",
+        "TypeScript",
+        "JavaScript"
+      ],
+      "language_str": "TypeScript React, TypeScript, JavaScript"
+    },
+    {
+      "name": "luis-landscaping",
+      "file_count": 18,
+      "size_bytes": 76322,
+      "size_mb": 0.07,
+      "languages": [
+        "TypeScript",
+        "Markdown",
+        "HTML"
+      ],
+      "language_str": "TypeScript, Markdown, HTML"
+    }
+  ]
+}

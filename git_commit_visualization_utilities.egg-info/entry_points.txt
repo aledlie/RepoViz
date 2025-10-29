@@ -1,0 +1,4 @@
+[console_scripts]
+git-viz = enhanced_plot_scripts:main
+git-viz-examples = examples.example_configs:main
+git-viz-server = enhanced_mcp_server:main
