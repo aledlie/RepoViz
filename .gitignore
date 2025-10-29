@@ -150,6 +150,10 @@ reports/*.json
 commit_counts*.txt
 logs.txt
 
+# Configuration files with secrets
+mcp.json
+config.json
+
 # Generated data (if you want to exclude these)
 # Uncomment if you don't want to track generated visualizations
 # Generated Data/
